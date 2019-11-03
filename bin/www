@@ -47,12 +47,6 @@ getCollections(colls => {
   console.log('APP: Listening collections done', colls);
 });
 
-app.get('/subscribe', (req, res, next) => {
-  const channel = req.params.channel;
-  listenToChanges('stellars', wss.notifyAll);
-  listenToChanges(channel, wss.notify(channel));
-});
-
 
 server.listen(port);
 server.on('error', (error) => {
