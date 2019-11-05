@@ -9,7 +9,8 @@ const settings = {
   },
   satellite: {
     radius: 3,
-    color: '#06ABC2'
+    color: '#06ABC2',
+    size: 20
   },
   star: {
     radius: 1,
@@ -27,10 +28,8 @@ const StarMap = ({ satelites, stars }) => {
     context.fill();
   }
   const drawSatelite = (context, center, xcoord, ycoord) => {
-    context.beginPath();
-    context.fillStyle = settings.satellite.color;
-    context.arc(xcoord + center, ycoord + center, settings.satellite.radius, 0, 2 * Math.PI);
-    context.fill();
+    const img = document.getElementById("img-sat");
+    context.drawImage(img, xcoord + center, ycoord + center, settings.satellite.size, settings.satellite.size);
   }
   const drawStar = (context, center, xcoord, ycoord) => {
     context.beginPath();
@@ -41,7 +40,7 @@ const StarMap = ({ satelites, stars }) => {
 
   useEffect(() => {
     function scaleCoordinate(coord, center) {
-      return (coord/70) * center;
+      return (coord / 70) * center;
     }
 
     const canvas = canvasRef.current;
@@ -50,17 +49,20 @@ const StarMap = ({ satelites, stars }) => {
     ctx.clearRect(0, 0, center * 2, center * 2);
     drawCenter(ctx, center);
 
-    satelites.forEach(point => drawSatelite(ctx, center, scaleCoordinate(point.canvasPosition.x, center),scaleCoordinate(point.canvasPosition.y, center)));
+    satelites.forEach(point => drawSatelite(ctx, center, scaleCoordinate(point.canvasPosition.x, center), scaleCoordinate(point.canvasPosition.y, center)));
     stars.forEach(point => drawStar(ctx, center, scaleCoordinate(point.canvasPosition.x, center), scaleCoordinate(point.canvasPosition.y, center)));
 
   }, [satelites, stars]);
 
   return (
-    <canvas
-    id="star-canvas"
-      ref={canvasRef}
-      width={window.innerHeight - 40}
-      height={window.innerHeight - 40} />
+    <>
+      <img id="img-sat" src="./Satelite.png" />
+      <canvas
+        id="star-canvas"
+        ref={canvasRef}
+        width={window.innerHeight - 40}
+        height={window.innerHeight - 40} />
+    </>
   );
 }
 
