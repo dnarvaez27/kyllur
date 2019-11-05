@@ -22,7 +22,7 @@ const StarMap = ({ satelites, stars }) => {
 
   const drawCenter = (context, center) => {
     context.beginPath();
-    context.fillStyle = settings.user.color
+    context.fillStyle = settings.user.color;
     context.arc(center, center, settings.user.radius, 0, 2 * Math.PI);
     context.fill();
   }
@@ -40,14 +40,18 @@ const StarMap = ({ satelites, stars }) => {
   }
 
   useEffect(() => {
+    function scaleCoordiante(coord, center) {
+      return (coord/70) * center;
+    }
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    const center = (window.innerHeight - 40) / 2
+    const center = (window.innerHeight - 40) / 2;
     ctx.clearRect(0, 0, center * 2, center * 2);
     drawCenter(ctx, center);
 
-    satelites.forEach(point => drawSatelite(ctx, center, point.canvasPosition.x, point.canvasPosition.y));
-    stars.forEach(point => drawStar(ctx, center, point.canvasPosition.x, point.canvasPosition.y));
+    satelites.forEach(point => drawSatelite(ctx, center, scaleCoordinate(point.canvasPosition.x, center),scaleCoordinate(point.canvasPosition.y, center)));
+    stars.forEach(point => drawStar(ctx, center, scaleCoordinate(point.canvasPosition.x, center), scaleCoordinate(point.canvasPosition.y, center)));
 
   }, [satelites, stars]);
 
