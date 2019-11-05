@@ -14,7 +14,7 @@ class SideralTime {
 
   calculate(longitude) {
     const time = new Date().getDate();
-    return (this.L0 + this.L1 * this.deltaJ*time + this.L2 * Math.pow(this.deltaJ * time, 2) - longitude) % 360;
+    return (this.L0 + this.L1 * this.deltaJ * time + this.L2 * Math.pow(this.deltaJ * time, 2) - longitude) % 360;
   }
 }
 const sideralTime = new SideralTime();
@@ -27,11 +27,12 @@ async function getSatellites(latitude, longitude) {
   const satellites = await req.json();
 
   return satellites.above.map(s => {
+    const ra = sideralTime.calculate(s.satlng);
 
     return {
       ...s,
       canvasPosition: {
-        x: sideralTime.calculate(s.satlng) - mySideral,
+        x: ra - mySideral,
         y: s.satlat - latitude
       }
     };

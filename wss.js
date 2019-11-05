@@ -37,7 +37,7 @@ class Client {
     this.subscribedChannels = [];
     this.onNewChannel = onNewChannel;
     this.removeChannels = removeChannels;
-
+    
     ws.on('message', this.onNewMessage.bind(this));
     ws.on('close', this.onClose(close).bind(this));
   }
@@ -113,6 +113,7 @@ class WSS {
     this.clients = [];
     this.chanels = {};
     this.notifyAll = this.notifyAll.bind(this);
+    this.notify = this.notify.bind(this);
 
     this.onClientSubscription = this.onClientSubscription.bind(this);
     this.onClientClose = this.onClientClose.bind(this);
@@ -172,7 +173,9 @@ class WSS {
   notify(channel) {
     return (data) => {
       console.log(`WSS: Notifying ${channel}`);
-      this.chanels[channel].listeners.forEach(cli => cli.send(JSON.parse(data)));
+      if(this.chanels[channel]){
+        this.chanels[channel].listeners.forEach(cli => cli.send(JSON.parse(data)));
+      }
     };
   }
 }

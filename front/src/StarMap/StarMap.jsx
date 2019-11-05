@@ -40,7 +40,7 @@ const StarMap = ({ satelites, stars }) => {
   }
 
   useEffect(() => {
-    function scaleCoordiante(coord, center) {
+    function scaleCoordinate(coord, center) {
       return (coord/70) * center;
     }
 

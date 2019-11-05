@@ -35,7 +35,7 @@ const iterate = async (cursor, cbk) => {
 };
 
 const functions = {
-  get(resolve, reject, db, collection_name, query = {}, limit = 100, sort = {}) {
+  get(resolve, reject, db, collection_name, query = {}, limit = 1000, sort = {}) {
     doTry(reject, () => {
       db.collection(collection_name)
         .find(query)
