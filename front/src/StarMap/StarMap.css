@@ -1,0 +1,7 @@
+#star-canvas {
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 200px -100px white;
+  z-index: 10;
+  background-color: #212121;
+}

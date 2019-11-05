@@ -1,6 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
 
-// const url = process.env.MONGODB_URI;
 const url = process.env.MONGODB_URI;
 const dbName = 'kyllur';
 
@@ -101,7 +100,7 @@ const execQuery = async (func, collection_name, query, ...args) => {
     doTry(reject, () => {
       getDBConnection(client => {
         func(resolve, reject, client.db(dbName), collection_name, query, ...args);
-        client.close();
+        // client.close();
       });
     });
   });
@@ -123,16 +122,16 @@ const getCollections = (onDone) => {
   });
 };
 
-const listenToChanges = (collectionName, cbk) => {
+const listenToChanges = (collectionName, pipeline = [], cbk, manipulateStream) => {
   getDBConnection(client => {
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    const changeStream = collection.watch();
-    console.log('MDB:', 'Listening to changes on mongo', collectionName);
+    const changeStream = collection.watch(pipeline);
+    console.log('MDB:', 'Listening to changes on mongo', collectionName, pipeline);
 
     changeStream.on('change', changedData => {
-      console.log('MDB:', 'Data change', JSON.stringify(changedData));
+      console.log('MDB:', 'Data change', changedData.operationType);
 
       (async () => {
         const data = await execQuery(functions.get, collectionName, {});
@@ -140,6 +139,7 @@ const listenToChanges = (collectionName, cbk) => {
         cbk(dataRead);
       })();
     });
+    manipulateStream(changeStream);
   });
 };
 

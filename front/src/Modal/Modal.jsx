@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
 
 const Modal = ({ open, content }) => {
-
-  // const [_open, setOpen] = useState(open);
-
   return (
     <div id="modal" className={!open ? 'hidden' : ''}>
       <div id="modal-bg" />

@@ -1,0 +1,12 @@
+#fullmodal {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+#fullmodal.hidden {
+  display: none;
+}

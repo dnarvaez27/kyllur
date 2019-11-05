@@ -1,15 +1,15 @@
 #about {
   position: relative;
+  color: white;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  text-align: center;
+  padding: 20px;
 }
 
-#about > button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  border: 1px solid transparent;
-  background-color: transparent;
-  font-weight: bold;
+#about > * {
+  display: block;
+  padding: 20px;
 }
 
 #about > span:nth-child(1) {
@@ -19,5 +19,17 @@
 
 #about > div > span:nth-child(1) {
   font-weight: bold;
+  display: block;
+}
+
+#about > div > span > a,
+#about > div > span > a:visited {
+  color: gold;
+}
+
+#about > div > span:nth-child(2) {
+  max-width: 60vw;
+  text-align: center;
+  margin: auto;
   display: block;
 }

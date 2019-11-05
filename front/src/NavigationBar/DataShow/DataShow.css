@@ -1,0 +1,70 @@
+#datashow-container {
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+
+#datashow-container > div:nth-child(1) {
+  display: grid;
+  padding: 20px;
+}
+
+#datashow-container > div:nth-child(1) > div {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#datashow-container > div:nth-child(1) > div > button {
+  background-color: white;
+  border: 2px solid white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#datashow-container > div:nth-child(1) > div > button.active,
+#datashow-container > div:nth-child(1) > div > button:hover {
+  background-color: transparent;
+  color: white;
+}
+
+#datashow-container > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 50px;
+  gap: 20px;
+}
+
+#datashow-container > div:nth-child(2) > div {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 1px 10px -5px black;
+  position: relative;
+}
+
+#datashow-container > div:nth-child(2) > div > div {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+#datashow-container > div:nth-child(2) > div > div > button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  pad: 5px;
+}
+
+#datashow-container > div:nth-child(2) > div > span {
+  display: block;
+}
+
+#datashow-container > div:nth-child(2) > div > span > i {
+  padding-right: 5px;
+  font-size: 0.8em;
+}
+
+#datashow-container > div:nth-child(2) > div > span:nth-child(1) {
+  font-weight: bold;
+  padding: 0 0 10px;
+}

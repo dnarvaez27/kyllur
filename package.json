@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start-dev": "nodemon ./bin/www"
+    "start-dev": "nodemon ./bin/www",
+    "load": "node load.js",
+    "db": "node test.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +15,8 @@
     "http-errors": "~1.6.3",
     "mongodb": "^3.3.3",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.0",
+    "particles.js": "^2.0.0",
     "ws": "^7.2.0"
   },
   "devDependencies": {

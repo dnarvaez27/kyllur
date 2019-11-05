@@ -1,5 +1,5 @@
 #nav-bar {
-  height: 8vh;
+  height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
@@ -7,29 +7,67 @@
 }
 
 #nav-bar > #search-container {
-  margin: auto 0 auto 10px;
   width: 100%;
+  display: block;
+  padding: 20px;
 }
 
-#nav-bar > #search-container > button {
+#nav-bar > #footer-container {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+
+#nav-bar > div > button {
   background-color: white;
   border: 1px solid white;
   padding: 7px 10px 5px;
   border-radius: 10px;
   box-shadow: 0 1px 10px -5px black;
+  transition: all 0.5s ease-in-out;
 }
 
-#nav-bar > #search-container > button:nth-child(2) {
+#nav-bar > div > button.active {
+  position: fixed;
+  z-index: 30;
+  background-color: gold;
+  border: 1px solid gold;
+  color: black;
+}
+
+#nav-bar > div > button.active:hover {
+  color: gold;
+  border: 1px solid gold;
+}
+
+#nav-bar > #search-container > button:nth-child(2).active {
+  right: 20px;
+  top: 20px;
+  padding: 20px;
+}
+
+#nav-bar > #footer-container > button:nth-child(1).active {
+  padding: 20px;
+  bottom: 20px;
+}
+
+#nav-bar > #footer-container > button:nth-child(2).active {
+  right: 20px;
+
+  bottom: 20px;
+}
+
+#nav-bar > div > button:nth-child(2) {
   float: right;
-  margin-right: 20px;
 }
 
-#nav-bar > #search-container > button:hover {
+#nav-bar > div > button:hover {
   background-color: #212121;
   color: white;
   border: 1px solid white;
 }
 
-#nav-bar > #search-container > button > i {
+#nav-bar > div > button > i {
   padding-right: 5px;
 }
