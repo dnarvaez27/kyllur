@@ -1,32 +1,81 @@
-A simple example of how to connect Node + Express + Mongo + React + WS. The app doesn't have much, it just monitors anything that happens in the collection "test" of the "reactive" db and sends it to the clients. The Mongo documents should have an unique name attribute
+# Kyllur
+
+## About the project
+The name comes frome the sound of quyllur from Quechuan language that stands for star.
+### The project
+Initially this project starts as a University project for ISIS-3710 Web development. However, we want to power this tool up to explore things in the sky beyond our sight. We want you to explore the sky above you, explore the stars and satellites above a location , we will show you this objects in real time*
+
+## What we use?
+We are using [N2YO](https://www.n2yo.com/) for accessing satellites location in real time, our own database in Mongo to store around 3K stars coordinates parsed from [VizieR](http://vizier.u-strasbg.fr/viz-bin/VizieR?-source=v/50).
+
+### Technologies
+* **Node.js**
+  * **Express.js**
+* **React**
+* **WS (WebSockets)**
+* **MongoDB - Atlas**
 
 ## Running
 
-### Server
+* Backend
+  > To run the backend first configure the environment variables.
+  ```
+    npm start
+  ```
+  * To run the backend in development
+  ```
+    npm run start-dev
+  ```
+* Frontend
+  > To run the frontend first configure the backend endpoint
+  ```
+    cd front
+    npm start
+  ```
 
+## Environment Variables
 ```
-yarn install
-yarn start
+  DELTA_INTERVAl: Time interval to notify a user
+```
+```
+  MONGODB_URI: URI to access MongoDB
+```
+```
+  N2YO_KEY: API Key to make N2YO requests
 ```
 
-
-### Client
+## DB Model
 ```
-cd front
-yarn install
-yarn start
+  Stars: {
+    _id:
+    nombre:
+    estado:
+    masa
+    descubrimiento
+    actualizacion
+    estado_publicacion
+    tipo_deteccion
+    ra
+    dec
+    distancia_estrella
+    masa_estrella
+  }
+```
+```
+  Locations: {
+    _id
+    latitude
+    longitude
+  }
 ```
 
-Then the server will be running in http://localhost:3001 and the client in http://localhost:3000. 
+## Collaborators
+* Pedro Salazar Paredes  
+  [Site](https://pedrito.dev/)
+* David Narvaez Guerrero  
+  [Site](http://dnarvaez27.github.io/)
 
-### Mongo
 
-*You will need to have Mongo running with replicaset enabled* 
-
-```
-mongod --replSet rs
-
-mongo
-rs.initiate()
-```
-
+___
+## Licence
+This project is public under the MIT license, found [here](https://github.com/dnarvaez27/kyllur/blob/master/LICENSE)
