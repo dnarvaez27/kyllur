@@ -5,6 +5,8 @@ The name comes frome the sound of quyllur from Quechuan language that stands for
 ### The project
 Initially this project starts as a University project for ISIS-3710 Web development. However, we want to power this tool up to explore things in the sky beyond our sight. We want you to explore the sky above you, explore the stars and satellites above a location , we will show you this objects in real time*
 
+![](https://i.imgur.com/bJWE5Lc.png)
+
 ## What we use?
 We are using [N2YO](https://www.n2yo.com/) for accessing satellites location in real time, our own database in Mongo to store around 3K stars coordinates parsed from [VizieR](http://vizier.u-strasbg.fr/viz-bin/VizieR?-source=v/50).
 
