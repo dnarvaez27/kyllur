@@ -74,6 +74,10 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
     );
   };
 
+  useEffect(() => {
+    showAbout();
+  }, []);
+
   return (
     <div id="nav-bar">
       <div id="search-container">
