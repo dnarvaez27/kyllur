@@ -5,7 +5,9 @@ import Modal from './Modal/Modal';
 import StarMap from './StarMap/StarMap';
 import FullModal from './FullModal/FullModal';
 
-const wssURI = process.env.URL;
+const wssURI = process.env.URL || 'https://kyllur.herokuapp.com/ws';
+console.log(`WSS URL ${wssURI}`);
+
 
 const App = () => {
 
