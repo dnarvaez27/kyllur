@@ -3,6 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 const url = process.env.MONGODB_URI;
 const dbName = 'kyllur';
 
+// Well structured!
 
 console.log('MDB:', url, dbName);
 
