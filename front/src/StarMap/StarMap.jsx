@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './StarMap.css';
 
+// Try using more comments to make the code more mantainable.
+
 const settings = {
   user: {
     radius: 8,
