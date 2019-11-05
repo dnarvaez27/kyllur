@@ -1,0 +1,35 @@
+#nav-bar {
+  height: 8vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+
+#nav-bar > #search-container {
+  margin: auto 0 auto 10px;
+  width: 100%;
+}
+
+#nav-bar > #search-container > button {
+  background-color: white;
+  border: 1px solid white;
+  padding: 7px 10px 5px;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px -5px black;
+}
+
+#nav-bar > #search-container > button:nth-child(2) {
+  float: right;
+  margin-right: 20px;
+}
+
+#nav-bar > #search-container > button:hover {
+  background-color: #212121;
+  color: white;
+  border: 1px solid white;
+}
+
+#nav-bar > #search-container > button > i {
+  padding-right: 5px;
+}

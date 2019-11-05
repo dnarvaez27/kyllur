@@ -1,0 +1,23 @@
+#about {
+  position: relative;
+}
+
+#about > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-weight: bold;
+}
+
+#about > span:nth-child(1) {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#about > div > span:nth-child(1) {
+  font-weight: bold;
+  display: block;
+}

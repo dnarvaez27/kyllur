@@ -1,0 +1,30 @@
+#modal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  z-index: 100;
+}
+
+#modal.hidden {
+  display: none;
+}
+
+#modal > #modal-bg {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+}
+
+#modal > #modal-content {
+  position: absolute;
+  top: 0;
+  display: grid;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-shadow: 0 1px 10px -5px black;
+  border-radius: 10px;
+}

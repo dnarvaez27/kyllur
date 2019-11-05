@@ -1,0 +1,44 @@
+#changelocation-container > div:nth-child(1) {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#changelocation-container > div:nth-child(2) > label {
+  padding: 10px 0;
+  display: block;
+}
+
+#changelocation-container > div:nth-child(2) > label > span {
+  display: block;
+  padding: 5px 0 0;
+}
+
+#changelocation-container > div:nth-child(2) > label > span > i {
+  padding-right: 5px;
+}
+
+#changelocation-container > div:nth-child(2) > label > input {
+  border: 1px solid transparent;
+  border-bottom: 1px solid lightgray;
+  outline: none;
+}
+
+#changelocation-container > div:nth-child(2) > label > input:focus {
+  border-bottom: 1px solid black;
+}
+
+#changelocation-container > div:nth-child(3) {
+  text-align: right;
+  padding: 10px 0 0;
+}
+
+#changelocation-container > div:nth-child(3) > button {
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+#changelocation-container > div:nth-child(3) > button:nth-child(2) {
+  background-color: #212121;
+  color: white;
+}
