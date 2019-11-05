@@ -18,13 +18,15 @@ const About = ({ close }) => {
         <span>
           Initially this project starts as a University project for ISIS-3710 Web development.
           However, we want to power this tool up to explore things in the sky beyond our sight.
+          We want you to explore the sky above you, explore the stars and satellites above a location
+          , we will show you this objects in real time*
         </span>
       </div>
       <div>
         <span>What we use?</span>
         <span>
           We are using <a target="_blank" rel="noopener noreferrer" href="https://www.n2yo.com/">N2YO</a> for accessing satellites location in real time, 
-          our own database in Mongo to store around 3K stars coordinates in the space and some maths to paint them in a canvas
+          our own database in Mongo to store around 3K stars coordinates in the space and some maths to paint them in a canvas. PS: If you let us we also use your location ;)
         </span>
       </div>
       <div>
