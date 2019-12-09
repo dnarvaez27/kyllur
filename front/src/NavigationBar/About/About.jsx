@@ -19,7 +19,7 @@ const About = ({ close }) => {
           Initially this project starts as a University project for ISIS-3710 Web development.
           However, we want to power this tool up to explore things in the sky beyond our sight.
           We want you to explore the sky above you, explore the stars and satellites above a location
-          , we will show you this objects in real time*
+          , we will show you this objects in real time
         </span>
       </div>
       <div>

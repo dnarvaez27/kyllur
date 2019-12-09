@@ -47,7 +47,6 @@ const App = () => {
         } else {
           console.log(msg);
         }
-        // console.log(`WS: Message ${JSON.stringify(msg)}`);
       }
     }
   }, [ws, initialFetch]);

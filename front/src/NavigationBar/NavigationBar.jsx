@@ -11,32 +11,6 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
   const [position, setPosition] = useState({ latitude: 0, longitude: 0, accuracy: 0 });
   const [state, setState] = useState(-1);
 
-  useEffect(() => {
-    if (state === 2) {
-      openFullModal(true, <Queries queries={queries} />);
-    }
-  }, [queries, openFullModal, state]);
-
-  useEffect(() => {
-    changeLocation(position);
-  }, [position, changeLocation]);
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(p => {
-        setPosition({ latitude: p.coords.latitude, longitude: p.coords.longitude });
-      });
-    } else {
-      console.error('No geolocation');
-    }
-  }, []);
-
-  useEffect(() => {
-    if (state === 3) {
-      openFullModal(true, <DataShow data={data} />);
-    }
-  }, [state, data, openFullModal]);
-
   const showChangeLocation = () => {
     openModal(true, <ChangeLocation
       currentLocation={position}
@@ -76,7 +50,33 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
 
   useEffect(() => {
     showAbout();
-  });
+  }, []);
+
+  useEffect(() => {
+    if (state === 2) {
+      openFullModal(true, <Queries queries={queries} />);
+    }
+  }, [queries]);
+
+  useEffect(() => {
+    changeLocation(position);
+  }, [position]);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(p => {
+        setPosition({ latitude: p.coords.latitude, longitude: p.coords.longitude });
+      });
+    } else {
+      console.error('No geolocation');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (state === 3) {
+      openFullModal(true, <DataShow data={data} />);
+    }
+  }, [state, data]);
 
   return (
     <div id="nav-bar">
@@ -125,3 +125,4 @@ NavigationBar.propTypes = {
 };
 
 export default NavigationBar;
+
