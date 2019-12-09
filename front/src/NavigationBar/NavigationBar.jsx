@@ -95,14 +95,14 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
         </button>
       </div>
       <div id="footer-container">
-        <button onClick={state !== 2 ? showQueries : closeFullModal} className={state === 2 ? 'active' : ''}>
+        {/* <button onClick={state !== 2 ? showQueries : closeFullModal} className={state === 2 ? 'active' : ''}>
           {closeOr(2, (
             <>
               <i className="fas fa-stream" />
               <span>Queries</span>
             </>
           ))}
-        </button>
+        </button> */}
         <button onClick={state !== 3 ? showData : closeFullModal} className={state === 3 ? 'active' : ''}>
           {closeOr(3, (
             <>
