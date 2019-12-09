@@ -15,11 +15,11 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
     if (state === 2) {
       openFullModal(true, <Queries queries={queries} />);
     }
-  }, [queries]);
+  }, [queries, openFullModal, state]);
 
   useEffect(() => {
     changeLocation(position);
-  }, [position]);
+  }, [position, changeLocation]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -35,7 +35,7 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
     if (state === 3) {
       openFullModal(true, <DataShow data={data} />);
     }
-  }, [state, data]);
+  }, [state, data, openFullModal]);
 
   const showChangeLocation = () => {
     openModal(true, <ChangeLocation
@@ -76,7 +76,7 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
 
   useEffect(() => {
     showAbout();
-  }, []);
+  });
 
   return (
     <div id="nav-bar">

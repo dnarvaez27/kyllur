@@ -56,7 +56,7 @@ const StarMap = ({ satelites, stars }) => {
 
   return (
     <>
-      <img id="img-sat" src="./assets/images/Satelite.png" />
+      <img id="img-sat" src="./assets/images/Satelite.png" alt="satellite-icon"/>
       <canvas
         id="star-canvas"
         ref={canvasRef}
