@@ -78,6 +78,12 @@ We are using [N2YO](https://www.n2yo.com/) for accessing satellites location in 
   [Site](http://dnarvaez27.github.io/)
 
 
+## See More
+* [Babel CLI](https://babeljs.io/docs/en/babel-cli)
+* [Source Maps](https://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
+* [TypeScript CLI](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+
+
 ___
 ## Licence
 This project is public under the MIT license, found [here](https://github.com/dnarvaez27/kyllur/blob/master/LICENSE)

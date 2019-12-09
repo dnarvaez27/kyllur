@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "package.schema.json",
+  "title": "Package JSON",
+  "description": "Package JSON description",
+  "properties": {
+    "scripts": {
+      "properties": {
+        "load": {
+          "description": "Run the script to load the DB"
+        },
+        "type-check": {
+          "description": "Check for typescript types. Does not generate any files"
+        },
+        "type-check:watch": {
+          "description": "Check file types and run the compiler in watch mode. Watch input files and trigger recompilation on changes"
+        },
+        "build:types": {
+          "description": "Build the declaration files"
+        },
+        "build:types:watch": {
+          "description": "Build the declaration files when they change"
+        },
+        "build:js": {
+          "description": "Builds the src directory and outputs the compilated file into the lib directory and generates the source map inline"
+        },
+        "build:js:watch": {
+          "description": "Compile the code when it changes."
+        },
+        "build": {
+          "description": "Build the app with declaration files and compiled output"
+        },
+        "build:watch": {
+          "description": "Build the app with declaration files and compiled output when it changes"
+        },
+        "start": {
+          "description": "Starts the compilated code"
+        },
+        "start:watch": {
+          "description": "Run the app with a watch mode that refreshes the running app if it changes"
+        },
+        "app": {
+          "description": "Builds the code and starts it"
+        },
+        "app:watch": {
+          "description": "Builds the code and starts it in watch mode"
+        }
+      }
+    },
+    "dependencies": {
+      "properties": {
+        "@babel/runtime": {
+          "description": "To make runtime operations (such as async) work"
+        },
+        "particles.js": {
+          "description": "For background"
+        }
+      }
+    },
+    "babel": {
+      "allOf": [{ "$ref": "http://json.schemastore.org/babelrc" }]
+    }
+  },
+  "allOf": [{ "$ref": "http://json.schemastore.org/package.json" }]
+}

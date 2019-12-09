@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-const app = require('../app');
-const debug = require('debug')('nodeexpressreactive4:server');
-const http = require('http');
-const { listenToChanges } = require('../db');
-const WSS = require('../wss');
+import Debug from 'debug';
+import { createServer } from 'http';
+import app from '../app';
+import Mix from '../utils/mix';
 
-const wss = new WSS();
+const debug = Debug('nodeexpressreactive4:server');
 
 /**
  * Normalize a port into a number, string, or false.
  */
-const normalizePort = (val) => {
+const normalizePort = (val: any) => {
   const port = parseInt(val, 10);
   // named pipe ? val : port number ? port : false
   return isNaN(port)
@@ -34,24 +30,17 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-const server = http.createServer(app);
+const server = createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-wss.setup(server);
-listenToChanges('locations', [], wss.notify('locations'), () => { });
-
-// getCollections(colls => {
-//   colls.forEach(c => {
-//     listenToChanges(c, wss.notify(c));
-//   });
-//   console.log('APP: Listening collections done', colls);
-// });
+const mix = new Mix({ server });
+mix.start();
 
 
 server.listen(port);
-server.on('error', (error) => {
+server.on('error', (error: any) => {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -75,9 +64,16 @@ server.on('error', (error) => {
   }
 });
 server.on('listening', () => {
-  const addr = server.address();
+  const addr = getOrThrow(server.address());
   const bind = typeof addr === 'string'
     ? `pipe ${addr}`
     : `port ${addr.port}`;
   debug('Listening on ' + bind);
 });
+
+function getOrThrow(val: any) {
+  if (val) {
+    return val;
+  }
+  throw Error(`Failed Assertion on variable. Must not be null: ${val}`);
+}

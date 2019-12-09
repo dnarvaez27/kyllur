@@ -5,7 +5,7 @@ import Modal from './Modal/Modal';
 import StarMap from './StarMap/StarMap';
 import FullModal from './FullModal/FullModal';
 
-const wssURI = process.env.URL || 'wss://kyllur.herokuapp.com/ws';
+const wssURI = 'ws://localhost:3001/ws';
 console.log(`WSS URL ${wssURI}`);
 
 
@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     const nWs = new WebSocket(wssURI);
     setWs(nWs);
-    window.particlesJS.load('particles-js', '/particles.json', () => { });
+    window.particlesJS.load('particles-js', '/assets/scripts/particles.json', () => { });
   }, []);
 
   useEffect(() => {
@@ -42,8 +42,8 @@ const App = () => {
         const msg = JSON.parse(ev.data);
         if ('LIVE' in msg) {
           setState(msg.LIVE);
-        } else if ('LOCATIONS' in msg) {
-          setQueries(msg.LOCATIONS);
+        } else if ('CH_LOCATIONS' in msg) {
+          setQueries(msg.CH_LOCATIONS);
         } else {
           console.log(msg);
         }
