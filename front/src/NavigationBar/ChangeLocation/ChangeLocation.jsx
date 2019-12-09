@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ChangeLocation.css';
+import ReactMap from './ReactMap';
+
 
 const ChangeLocation = ({ currentLocation, changeLocation, cancel }) => {
 
-  const [latitude, setLatitude] = useState(currentLocation.latitude);
-  const [longitude, setLongitude] = useState(currentLocation.longitude);
+  const [position, setPosition] = useState({ lat: currentLocation.latitude, lng: currentLocation.longitude });
+
+  // const [latitude, setLatitude] = useState(currentLocation.latitude);
+  // const [longitude, setLongitude] = useState(currentLocation.longitude);
 
   const getCurrent = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(p => {
-        setLatitude(p.coords.latitude);
-        setLongitude(p.coords.longitude);
+        setPosition({ lat: p.coords.latitude, lng: p.coords.longitude });
       });
     } else {
       console.error('No geolocation');
@@ -22,29 +25,19 @@ const ChangeLocation = ({ currentLocation, changeLocation, cancel }) => {
     <div id="changelocation-container">
       <div>
         <span>Change Location</span>
-        <button title="Current Position" onClick={getCurrent}>
+        <span>{position.lat}, {position.lng}</span>
+        <button title="Your Location" onClick={getCurrent}>
           <i className="fas fa-crosshairs" />
         </button>
       </div>
       <div>
-        <label>
-          <span>
-            <i className="fas fa-map-marker-alt" />
-            Latitude
-          </span>
-          <input type="number" placeholder="latitude" value={latitude} onChange={e => setLatitude(+e.target.value)} />
-        </label>
-        <label>
-          <span>
-            <i className="fas fa-map-marker-alt" />
-            Longitude
-          </span>
-          <input type="number" placeholder="longitude" value={longitude} onChange={e => setLongitude(+e.target.value)} />
-        </label>
+        <ReactMap
+          center={position}
+          onDragend={({ lat, lng }) => setPosition({ lat, lng })} />
       </div>
       <div>
         <button onClick={() => cancel()}>Cancel</button>
-        <button onClick={() => changeLocation({ latitude, longitude })}>Change</button>
+        <button onClick={() => changeLocation({ latitude: position.lat, longitude: position.lng })}>Change</button>
       </div>
     </div>
   );

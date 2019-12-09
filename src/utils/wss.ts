@@ -4,7 +4,7 @@ import DB, { Functions } from './db';
 import { getEnvVar, decorators } from './utils';
 
 
-const DELTA_INTERVAl = +(getEnvVar('DELTA_INTERVAL', Infinity));
+const DELTA_INTERVAL = +(getEnvVar('DELTA_INTERVAL', Infinity));
 
 
 enum PROTOCOL {
@@ -112,7 +112,7 @@ class ClientManager {
   initInterval(coordinates: { latitude: number, longitude: number }) {
     this.clearClientInterval();
     this.sendResponseLocation(coordinates);
-    this.clientInterval = setInterval(() => this.sendResponseLocation(coordinates), DELTA_INTERVAl);
+    this.clientInterval = setInterval(() => this.sendResponseLocation(coordinates), DELTA_INTERVAL);
   }
 
   @decorators.log('WS')
