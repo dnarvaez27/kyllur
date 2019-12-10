@@ -19,7 +19,7 @@ const About = ({ close }) => {
           We want you to explore the sky above you, explore the stars and satellites above a location 
           in real <small>ish</small> time.
         </span>
-        <ul style="list-style-type:none">
+        <ul style={{listStyleType: 'none'}}>
           <li>Interact with the objects in the sky! Click on them for more details.</li>
           <li>Don't like your sky? Change the your location to see a new sky</li>
         </ul>

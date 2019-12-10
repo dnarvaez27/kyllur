@@ -77,8 +77,21 @@ const StarMap = ({ satelites, stars }) => {
     const y = ycoord + center;
     const s = settings.satellite.size;
 
+    if (lastClicked && (data.satname === lastClicked.satname)) {
+      context.shadowBlur = 8;
+      context.shadowOffsetX = 0;
+      context.shadowOffsetY = 0;
+      context.shadowColor = "white";
+    }
+
     satsStore.push({ x, y, w: s, h: s, data });
     context.drawImage(img, x, y, s, s);
+
+    context.globalAlpha = 1;
+    context.shadowBlur = 0;
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
+    context.shadowColor = "white";
   }
   const drawStar = (context, center, xcoord, ycoord, color, magnitude, data) => {
     context.beginPath();
@@ -103,7 +116,6 @@ const StarMap = ({ satelites, stars }) => {
     context.fill();
 
     context.globalAlpha = 1;
-
     context.shadowBlur = 0;
     context.shadowOffsetX = 0;
     context.shadowOffsetY = 0;
