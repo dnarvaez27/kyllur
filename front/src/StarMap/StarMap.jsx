@@ -35,18 +35,17 @@ const StarInfo = ({ star }) => {
   return (
     <div>
       <span><b>Star</b></span>
-      <span><b>HD:</b> {star.hd}</span>
-      <span><b>BF:</b> {star.bf}</span>
-      <span><b>GL:</b> {star.gl}</span>
-      <span><b>BF:</b> {star.bf}</span>
-      <span><b>Constelation:</b> {star.con}</span>
-      <span><b>Distance:</b> {star.dist}</span>
-      <span><b>HR:</b> {star.hr}</span>
+      <span><b>Name:</b> {star.proper||"No commmon name."}</span>
+      <span><b>HD ID:</b> {star.hd||"No HD id."}</span>
+      <span><b>HR ID:</b> {star.hr||"No HR id."}</span>
+      <span><b>GL ID:</b> {star.gl||"No GL id."}</span>
+      <span><b>BF ID:</b> {star.bf||"No BF id."}</span>
+      <span><b>Constelation:</b> {star.con||"Not in a comon constllation."}</span>
+      <span><b>Distance:</b> {star.dist} parsecs</span>
       <span><b>Magnitude:</b> {star.mag}</span>
-      <span><b>Name:</b> {star.proper}</span>
-      <span><b>Spetrum:</b> {star.spect}</span>
-      <span><b>RA:</b> {star.ra}</span>
-      <span><b>DEC:</b> {star.dec}</span>
+      <span><b>Specturm:</b> {star.spect}</span>
+      <span><b>RA:</b> {star.ra}°</span>
+      <span><b>DEC:</b> {star.dec}°</span>
     </div>
   );
 }
