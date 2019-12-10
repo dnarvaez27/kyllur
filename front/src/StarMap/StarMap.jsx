@@ -35,15 +35,6 @@ const StarInfo = ({ star }) => {
   return (
     <div>
       <span><b>Star</b></span>
-<<<<<<< HEAD
-      <span><b>Name:</b> {star.proper||"No commmon name."}</span>
-      <span><b title="Henry Draper Catalog ID">HD ID:</b> {star.hd||"No HD id."}</span>
-      <span><b title="Harvard Revised Catalog ID">HR ID:</b> {star.hr||"No HR id."}</span>
-      <span><b title="Gliese Catalog of Nearby Stars ID">GL ID:</b> {star.gl||"No GL id."}</span>
-      <span><b title="Bayer-Flamsteed designation">BF designation:</b> {star.bf||"No BF designation."}</span>
-      <span><b>Constelation:</b> {star.con||"Not in a comon constllation."}</span>
-      <span><b>Distance:</b> {star.dist} parsecs</span>
-=======
       <span><b>Name:</b> {star.proper||"No commmon name"}</span>
       <span><b>HD ID:</b> {star.hd||"No HD id"}</span>
       <span><b>HR ID:</b> {star.hr||"No HR id"}</span>
@@ -51,7 +42,6 @@ const StarInfo = ({ star }) => {
       <span><b>BF ID:</b> {star.bf||"No BF id"}</span>
       <span><b>Constelation:</b> {star.con||"Not in a common constllation"}</span>
       <span><b>Distance:</b> {star.dist.toFixed(4)} parsecs</span>
->>>>>>> 7dbae677e480b4911ec8767a381449cb22871ecd
       <span><b>Magnitude:</b> {star.mag}</span>
       <span><b>Specturm:</b> {star.spect}</span>
       <span><b>RA:</b> {star.ra.toFixed(4)}°</span>
