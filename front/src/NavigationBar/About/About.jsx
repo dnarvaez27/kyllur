@@ -19,8 +19,12 @@ const About = ({ close }) => {
           Initially this project starts as a University project for ISIS-3710 Web development.
           However, we want to power this tool up to explore things in the sky beyond our sight.
           We want you to explore the sky above you, explore the stars and satellites above a location
-          , we will show you this objects in real time
+          , we will show you this objects in real time <small>(In interval of times)</small>.
         </span>
+        <ul>
+          <li>Interact with the objects in the sky, click them and see more info. Don</li>
+          <li>Don't like your sky? Change the location to see a new sky</li>
+        </ul>
       </div>
       <div>
         <span>What we use?</span>

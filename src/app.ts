@@ -14,9 +14,9 @@ app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(stat(join(__dirname, 'front/build')));
+app.use(stat(join(__dirname, '../../front/build')));
 
-app.use('/', indexRouter);
+app.use('/stats', indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req: any, res: any, next: any) => {
@@ -31,7 +31,7 @@ app.use((err: any, req: any, res: any, next: any) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send('error');
 });
 
 export default app;

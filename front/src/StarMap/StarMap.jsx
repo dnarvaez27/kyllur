@@ -53,7 +53,7 @@ const StarInfo = ({ star }) => {
 
 const StarMap = ({ satelites, stars }) => {
   const canvasRef = useRef(null);
-  const [constellation, setConstellation] = useState('Hydra');
+  const [constellation, setConstellation] = useState(undefined);
   const [starStore] = useState([]);
   const [satsStore] = useState([]);
   const [lastClicked, setLastClicked] = useState(undefined);
