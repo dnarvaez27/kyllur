@@ -13,25 +13,17 @@ interface FunctionArguments {
   query: FilterQuery<any>
 }
 interface FunctionGetArguments extends FunctionArguments {
-  args: {
-    limit: number;
-    sort: any
-  }
+  limit: number;
+  sort: any
 };
 interface FunctionCreateArguments extends FunctionArguments {
-  args: {
-    data: any;
-  }
+  data: any;
 }
 interface FunctionUpdateArguments extends FunctionArguments {
-  args: {
-    values: any;
-  }
+  values: any;
 }
 interface FunctionJoinArguments extends FunctionArguments {
-  args: {
-    aggregate: any;
-  }
+  aggregate: any;
 }
 interface ListenArguments {
   collectionName: string;
@@ -45,12 +37,12 @@ type Function<T> = (args: any) => Promise<T>;
 export class Functions {
 
   @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: GET(${args[0].collection_name}: ${JSON.stringify(args[0].query)})`) })
-  static async get<T>({ db, collection_name, query, args = { limit: 10000, sort: {} } }: FunctionGetArguments): Promise<T[]> {
+  static async get<T>({ db, collection_name, query, limit = 10000, sort = {} }: FunctionGetArguments): Promise<T[]> {
     return await (
       db.collection<T>(collection_name)
         .find(query)
-        .sort(args.sort)
-        .limit(args.limit)
+        .sort(sort)
+        .limit(limit)
         .toArray()
     );
   }
@@ -63,16 +55,16 @@ export class Functions {
     );
   }
 
-  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: CREATE_ONE(${args[0].args})`) })
-  static async createOne<T>({ db, collection_name, args: { data } }: FunctionCreateArguments): Promise<InsertOneWriteOpResult<any>> {
+  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: CREATE_ONE(${JSON.stringify(args[0].data)})`) })
+  static async createOne<T>({ db, collection_name, data }: FunctionCreateArguments): Promise<InsertOneWriteOpResult<any>> {
     return await (
       db.collection<T>(collection_name)
         .insertOne(data)
     );
   }
 
-  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: CREATE_MANY(${args[0].args})`) })
-  static async createMany<T>({ db, collection_name, args: { data } }: FunctionCreateArguments): Promise<InsertWriteOpResult<any>> {
+  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: CREATE_MANY(${args[0].data})`) })
+  static async createMany<T>({ db, collection_name, data }: FunctionCreateArguments): Promise<InsertWriteOpResult<any>> {
     return await (
       db.collection<T>(collection_name)
         .insertMany(data)
@@ -95,7 +87,7 @@ export class Functions {
   }
 
   @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: UPDATE_ONE(${args[0].query})`) })
-  static async updateOne<T>({ db, collection_name, query, args: { values } }: FunctionUpdateArguments): Promise<UpdateWriteOpResult> {
+  static async updateOne<T>({ db, collection_name, query, values }: FunctionUpdateArguments): Promise<UpdateWriteOpResult> {
     return await (
       db.collection<T>(collection_name)
         .updateOne(query, values)
@@ -103,15 +95,15 @@ export class Functions {
   }
 
   @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: UPDATE_MANY(${args[0].query})`) })
-  static async updateMany<T>({ db, collection_name, query, args: { values } }: FunctionUpdateArguments): Promise<UpdateWriteOpResult> {
+  static async updateMany<T>({ db, collection_name, query, values }: FunctionUpdateArguments): Promise<UpdateWriteOpResult> {
     return await (
       db.collection<T>(collection_name)
         .updateMany(query, values)
     );
   }
 
-  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: JOIN(${args[0].args})`) })
-  static async join<T>({ db, collection_name, args: { aggregate } }: FunctionJoinArguments): Promise<T[]> {
+  @decorators.interceptAsync({ before: (_, args: any[]) => console.log(`FUN: JOIN(${args[0].aggregate})`) })
+  static async join<T>({ db, collection_name, aggregate }: FunctionJoinArguments): Promise<T[]> {
     return await (
       db.collection<T>(collection_name)
         .aggregate(aggregate)

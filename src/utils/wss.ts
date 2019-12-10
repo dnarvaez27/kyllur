@@ -131,7 +131,7 @@ class ClientManager {
   @decorators.log('WS')
   addLocationToDB({ latitude, longitude }: { latitude: number, longitude: number }) {
     (async () => {
-      await DB.execQuery(Functions.createOne, 'locations', {}, { args: { data: { latitude, longitude } } });
+      await DB.execQuery(Functions.createOne, 'locations', {}, { data: { latitude, longitude } });
     })();
   }
 

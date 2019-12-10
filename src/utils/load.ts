@@ -1,10 +1,10 @@
 import fs from 'fs';
 import DB, { Functions } from './db';
 
-fs.readFile('../data/stars.csv', 'utf8', (err: any, content: string) => {
+fs.readFile('./data/estrellas.csv', 'utf8', (err: any, content: string) => {
   if (err) throw Error(err);
 
-  const separator = ';';
+  const separator = ',';
   let data = content.trim().split('\n');
 
   const keys: string[] = data[0]
@@ -19,13 +19,13 @@ fs.readFile('../data/stars.csv', 'utf8', (err: any, content: string) => {
         .trim()
         .split(separator)
         .reduce((o: any, s: any, i: number) => {
-          o[keys[i]] = isNaN(s) ? s : +s;
+          o[keys[i]] = isNaN(s) || s === '' ? s : +s;
           return o;
-        }, { likes: 0 });
+        }, {});
     });
 
   (async () => {
-    await DB.execQuery(Functions.createMany, 'stars', stars);
+    await DB.execQuery(Functions.createMany, 'stars', {}, { data: stars });
     console.log('Loading done');
   })();
 });
