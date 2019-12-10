@@ -26,7 +26,7 @@ const SatInfo = ({ sat }) => {
       <span><b>Name:</b> {sat.satname}</span>
       <span><b>Designator:</b> {sat.intDesignator}</span>
       <span><b>Launch:</b> {sat.launchDate}</span>
-      <span><b>Altitude:</b> {sat.satalt}</span>
+      <span><b>Altitude:</b> {sat.satalt} km</span>
     </div>
   );
 }
@@ -35,17 +35,17 @@ const StarInfo = ({ star }) => {
   return (
     <div>
       <span><b>Star</b></span>
-      <span><b>Name:</b> {star.proper||"No commmon name."}</span>
-      <span><b>HD ID:</b> {star.hd||"No HD id."}</span>
-      <span><b>HR ID:</b> {star.hr||"No HR id."}</span>
-      <span><b>GL ID:</b> {star.gl||"No GL id."}</span>
-      <span><b>BF ID:</b> {star.bf||"No BF id."}</span>
-      <span><b>Constelation:</b> {star.con||"Not in a comon constllation."}</span>
-      <span><b>Distance:</b> {star.dist} parsecs</span>
+      <span><b>Name:</b> {star.proper||"No commmon name"}</span>
+      <span><b>HD ID:</b> {star.hd||"No HD id"}</span>
+      <span><b>HR ID:</b> {star.hr||"No HR id"}</span>
+      <span><b>GL ID:</b> {star.gl||"No GL id"}</span>
+      <span><b>BF ID:</b> {star.bf||"No BF id"}</span>
+      <span><b>Constelation:</b> {star.con||"Not in a common constllation"}</span>
+      <span><b>Distance:</b> {star.dist.toFixed(4)} parsecs</span>
       <span><b>Magnitude:</b> {star.mag}</span>
       <span><b>Specturm:</b> {star.spect}</span>
-      <span><b>RA:</b> {star.ra}°</span>
-      <span><b>DEC:</b> {star.dec}°</span>
+      <span><b>RA:</b> {star.ra.toFixed(4)}°</span>
+      <span><b>DEC:</b> {star.dec.toFixed(4)}°</span>
     </div>
   );
 }
