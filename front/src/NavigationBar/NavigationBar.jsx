@@ -103,14 +103,14 @@ const NavigationBar = ({ openModal, openFullModal, changeLocation, data, queries
             </>
           ))}
         </button> */}
-        <button onClick={state !== 3 ? showData : closeFullModal} className={state === 3 ? 'active' : ''}>
+        {/* <button onClick={state !== 3 ? showData : closeFullModal} className={state === 3 ? 'active' : ''}>
           {closeOr(3, (
             <>
               <i className="fas fa-info-circle" />
               <span>Data</span>
             </>
           ))}
-        </button>
+        </button> */}
       </div>
     </div >
   );

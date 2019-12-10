@@ -95,7 +95,7 @@ const StarMap = ({ satelites, stars }) => {
       context.shadowColor = "white";
     }
     else {
-      context.globalAlpha = 0.35;
+      context.globalAlpha = 0.50;
     }
 
     starStore.push({ x, y, r, data })
