@@ -26,7 +26,7 @@ const SatInfo = ({ sat }) => {
       <span><b>Name:</b> {sat.satname}</span>
       <span><b>Designator:</b> {sat.intDesignator}</span>
       <span><b>Launch:</b> {sat.launchDate}</span>
-      <span><b>Altitude:</b> {sat.satalt}</span>
+      <span><b>Altitude:</b> {sat.satalt} km</span>
     </div>
   );
 }
@@ -35,6 +35,7 @@ const StarInfo = ({ star }) => {
   return (
     <div>
       <span><b>Star</b></span>
+<<<<<<< HEAD
       <span><b>Name:</b> {star.proper||"No commmon name."}</span>
       <span><b title="Henry Draper Catalog ID">HD ID:</b> {star.hd||"No HD id."}</span>
       <span><b title="Harvard Revised Catalog ID">HR ID:</b> {star.hr||"No HR id."}</span>
@@ -42,20 +43,30 @@ const StarInfo = ({ star }) => {
       <span><b title="Bayer-Flamsteed designation">BF designation:</b> {star.bf||"No BF designation."}</span>
       <span><b>Constelation:</b> {star.con||"Not in a comon constllation."}</span>
       <span><b>Distance:</b> {star.dist} parsecs</span>
+=======
+      <span><b>Name:</b> {star.proper||"No commmon name"}</span>
+      <span><b>HD ID:</b> {star.hd||"No HD id"}</span>
+      <span><b>HR ID:</b> {star.hr||"No HR id"}</span>
+      <span><b>GL ID:</b> {star.gl||"No GL id"}</span>
+      <span><b>BF ID:</b> {star.bf||"No BF id"}</span>
+      <span><b>Constelation:</b> {star.con||"Not in a common constllation"}</span>
+      <span><b>Distance:</b> {star.dist.toFixed(4)} parsecs</span>
+>>>>>>> 7dbae677e480b4911ec8767a381449cb22871ecd
       <span><b>Magnitude:</b> {star.mag}</span>
       <span><b>Specturm:</b> {star.spect}</span>
-      <span><b>RA:</b> {star.ra}°</span>
-      <span><b>DEC:</b> {star.dec}°</span>
+      <span><b>RA:</b> {star.ra.toFixed(4)}°</span>
+      <span><b>DEC:</b> {star.dec.toFixed(4)}°</span>
     </div>
   );
 }
 
 const StarMap = ({ satelites, stars }) => {
   const canvasRef = useRef(null);
+
   const [constellation, setConstellation] = useState(undefined);
+  const [lastClicked, setLastClicked] = useState(undefined);
   const [starStore] = useState([]);
   const [satsStore] = useState([]);
-  const [lastClicked, setLastClicked] = useState(undefined);
 
   const drawCenter = (context, center) => {
     // setTimeout(() => {
@@ -67,31 +78,49 @@ const StarMap = ({ satelites, stars }) => {
 
     // const img = document.getElementById("img-pin");
     // context.drawImage(img, center, center, settings.satellite.size, settings.satellite.size);
+    // TODO: To be removed (?)
   }
   const drawSatelite = (context, center, xcoord, ycoord, data) => {
     const img = document.getElementById("img-sat");
     context.shadowColor = '#FFF';
 
     const x = xcoord + center;
-    const y = ycoord + center;
+    const y = (-ycoord + center);
     const s = settings.satellite.size;
+    
+    if (lastClicked && (data.satname === lastClicked.satname)) {
+      context.shadowBlur = 8;
+      context.shadowOffsetX = 0;
+      context.shadowOffsetY = 0;
+      context.shadowColor = "white";
+    }
 
     satsStore.push({ x, y, w: s, h: s, data });
     context.drawImage(img, x, y, s, s);
+
+    context.globalAlpha = 1;
+    context.shadowBlur = 0;
+    context.shadowOffsetX = 0;
+    context.shadowOffsetY = 0;
+    context.shadowColor = "white";
   }
   const drawStar = (context, center, xcoord, ycoord, color, magnitude, data) => {
     context.beginPath();
     context.fillStyle = color;
 
     const x = xcoord + center;
-    const y = ycoord + center;
+    const y = (-ycoord + center);
     const r = Math.ceil(6 - magnitude);
 
     if (data.con === constellation) {
       context.shadowBlur = 8;
       context.shadowOffsetX = 0;
       context.shadowOffsetY = 0;
-      context.shadowColor = "white";
+      if (lastClicked && (JSON.stringify(lastClicked) === JSON.stringify(data))) {
+        context.shadowColor = "red";
+      } else {
+        context.shadowColor = "white";
+      }
     }
     else {
       context.globalAlpha = 0.50;
@@ -102,13 +131,11 @@ const StarMap = ({ satelites, stars }) => {
     context.fill();
 
     context.globalAlpha = 1;
-
     context.shadowBlur = 0;
     context.shadowOffsetX = 0;
     context.shadowOffsetY = 0;
     context.shadowColor = "white";
   }
-
   const redrawAll = (_stars, _satelites, paint = true) => {
     while (starStore.length > 0) {
       starStore.pop();
@@ -130,10 +157,9 @@ const StarMap = ({ satelites, stars }) => {
       _satelites.forEach(point => drawSatelite(ctx, center, scaleCoordinate(point.canvasPosition.x, center), scaleCoordinate(point.canvasPosition.y, center), point));
     }
   };
-
   const addClickListener = (e) => {
-    const x = e.clientX - (e.target.width / 2) - 44;
-    const y = e.clientY - 20;
+    const x = e.pageX - e.target.offsetLeft;
+    const y = e.pageY-e.target.offsetTop;
 
     let isStar = false;
 
@@ -166,7 +192,7 @@ const StarMap = ({ satelites, stars }) => {
 
   useEffect(() => {
     redrawAll(JSON.parse(JSON.stringify(stars)), JSON.parse(JSON.stringify(satelites)));
-  }, [satelites, stars, constellation]);
+  }, [satelites, stars, constellation, lastClicked]);
 
   return (
     <>
