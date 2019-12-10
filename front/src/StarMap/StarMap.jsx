@@ -75,7 +75,7 @@ const StarMap = ({ satelites, stars }) => {
     context.shadowColor = '#FFF';
 
     const x = xcoord + center;
-    const y = ycoord + center;
+    const y = (-ycoord + center);
     const s = settings.satellite.size;
     
     if (lastClicked && (data.satname === lastClicked.satname)) {
@@ -99,7 +99,7 @@ const StarMap = ({ satelites, stars }) => {
     context.fillStyle = color;
 
     const x = xcoord + center;
-    const y = ycoord + center;
+    const y = (-ycoord + center);
     const r = Math.ceil(6 - magnitude);
 
     if (data.con === constellation) {
