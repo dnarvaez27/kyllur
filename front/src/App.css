@@ -3,6 +3,8 @@
   width: 100%;
   background-color: #212121;
   display: flex;
+  overflow-x: hidden;
+  position: relative;
 }
 
 #particles-js {
@@ -15,3 +17,12 @@
 #particles-js > canvas {
   border-radius: 0;
 }
+
+/* #main-state{
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+#main-state > div:nth-child(2){
+  background-color: red;
+} */

@@ -10,6 +10,7 @@
   width: 100%;
   display: block;
   padding: 20px;
+  height: 0;
 }
 
 #nav-bar > #footer-container {
@@ -26,6 +27,7 @@
   border-radius: 10px;
   box-shadow: 0 1px 10px -5px black;
   transition: all 0.5s ease-in-out;
+  margin: 0 0 10px 20px;
 }
 
 #nav-bar > div > button.active {

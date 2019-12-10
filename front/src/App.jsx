@@ -5,7 +5,7 @@ import Modal from './Modal/Modal';
 import StarMap from './StarMap/StarMap';
 import FullModal from './FullModal/FullModal';
 
-const wssURI = 'ws://localhost:3001/ws';
+const wssURI = 'wss://kyllur.herokuapp.com/ws';
 console.log(`WSS URL ${wssURI}`);
 
 
@@ -61,6 +61,7 @@ const App = () => {
 
   const changeLocation = (position) => {
     if (ready) {
+      setState({ stars: [], satellites: [] });
       setPosition(position);
       ws.send(`LOCATION;${position.latitude};${position.longitude}`);
     } else {
