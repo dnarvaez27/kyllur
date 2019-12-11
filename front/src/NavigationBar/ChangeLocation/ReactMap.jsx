@@ -25,5 +25,6 @@ const ReactMap = ({ google, center = { lat: 4.6032624, lng: -74.0652016 }, onDra
 }
 
 export default GoogleApiWrapper({
+  //Ojo con el API KEY! ¯\_(ツ)_/¯ (Aunque me imagino que la tienen restringida)
   apiKey: 'AIzaSyALfvSRLCN3dLyVvuuZaVgBxDj-YnEF7gc',
 })(ReactMap);
