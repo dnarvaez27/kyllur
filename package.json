@@ -31,7 +31,7 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.0",
     "particles.js": "^2.0.0",
-    "ws": "^7.2.0"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
